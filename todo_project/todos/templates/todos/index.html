@@ -1,10 +1,13 @@
 <!DOCTYPE html>
+{% extends 'todos/layout.html' %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>HOME</title>
+    <title>{% block title %}TODOS{% endblock %}</title>
 </head>
 <body>
-    <h1>Hello world!</h1>
+    {% block content %}
+        <h1>Hello world  from index!</h1>
+    {% endblock %}
 </body>
 </html>
