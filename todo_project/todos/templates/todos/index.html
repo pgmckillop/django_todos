@@ -7,7 +7,25 @@
 </head>
 <body>
     {% block content %}
-        <h1>Hello world  from index!</h1>
+        {% if all_items %}
+        <table class="table table-bordered">
+            {% for item in all_items %}
+                {% if item.completed %}
+                    <tr class="table-secondary">
+                    <td>{{ item.item }}</td>
+                    <td style="text-align: center"> {{ item.completed }}</td>
+                    <td style="text-align: center">Delete</td>
+                </tr>
+                {% else %}
+                    <tr>
+                    <td>{{ item.item }}</td>
+                    <td style="text-align: center"> {{ item.completed }}</td>
+                    <td style="text-align: center">Delete</td>
+                </tr>
+                {% endif %}
+            {% endfor %}
+        </table>
+        {% endif %}
     {% endblock %}
 </body>
 </html>

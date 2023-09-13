@@ -1,8 +1,10 @@
 from django.shortcuts import render
+from .models import List
 
 # Home page index.html
 def index(request):
-    return render(request, 'todos/index.html', {})
+    all_items = List.objects.all
+    return render(request, 'todos/index.html', {'all_items': all_items})
 
 def about(request):
     wholename = "Paul McKillop"
