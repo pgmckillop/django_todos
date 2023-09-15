@@ -12,7 +12,7 @@
             {% for item in all_items %}
                 {% if item.completed %}
                     <tr class="table-secondary">
-                    <td>{{ item.item }}</td>
+                    <td class="striker">{{ item.item }}</td>
                     <td style="text-align: center"> {{ item.completed }}</td>
                     <td style="text-align: center">Delete</td>
                 </tr>
