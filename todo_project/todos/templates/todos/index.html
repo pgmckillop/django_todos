@@ -8,19 +8,28 @@
 <body>
     {% block content %}
         {% if all_items %}
+        {% if messages %}
+           {% for message in messages %}
+    <div class="alert alert-warning alert-dismissible" role="alert">
+        <strong>{{ message}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+            {% endfor %}
+        {% endif %}
         <table class="table table-bordered">
             {% for item in all_items %}
                 {% if item.completed %}
-                    <tr class="table-secondary">
+                <tr class="table-secondary">
                     <td class="striker">{{ item.item }}</td>
-                    <td style="text-align: center"> {{ item.completed }}</td>
-                    <td style="text-align: center">Delete</td>
+                    <td style="text-align: center"><a href="{% url 'uncross' item.id %}">Uncross</a></td>
+                    <td style="text-align: center"><a href="{% url 'delete' item.id %}">Delete</a></td>
                 </tr>
                 {% else %}
                     <tr>
                     <td>{{ item.item }}</td>
-                    <td style="text-align: center"> {{ item.completed }}</td>
-                    <td style="text-align: center">Delete</td>
+                    <td style="text-align: center"><a href="{% url 'cross_off' item.id %}">Cross Off</a></td>
+                    <td style="text-align: center"><a href="{% url 'delete' item.id %}">Delete</a></td>
                 </tr>
                 {% endif %}
             {% endfor %}
